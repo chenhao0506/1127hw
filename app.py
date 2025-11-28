@@ -61,7 +61,6 @@ def update_figure(selected_year, selected_continent):
     filtered_df = df[df.year == selected_year]
     plot_df = filtered_df.copy() 
     
-    # 繪製圖表 (使用完整資料)
     fig = px.scatter(plot_df,
                      x="gdpPercap",
                      y="lifeExp",
@@ -72,16 +71,14 @@ def update_figure(selected_year, selected_continent):
                      size_max=55
                      )
     
-    # 應用淡化/重設邏輯
+    # 調整透明度
     if selected_continent:
-        # 狀態為「選取」時：將非選定的 Trace 透明度調低
         for trace in fig.data:
             if trace.name != selected_continent:
                 trace.marker.opacity = 0.1 
             else:
                 trace.marker.opacity = 1.0
     else:
-        # 狀態為「重設」(None) 時：所有 Trace 透明度恢復正常
         for trace in fig.data:
              trace.marker.opacity = 1.0
              
@@ -92,7 +89,7 @@ def update_figure(selected_year, selected_continent):
     fig.update_layout(transition_duration=500, title=title_text)
     return fig
 
-# CALLBACK 3: 更新旭日圖 (保持不變)
+# callback 3: 旭日圖
 @callback(
     Output('sunburst-graph', 'figure'),
     Input('year-slider', 'value'))
