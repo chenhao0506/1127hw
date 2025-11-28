@@ -2,7 +2,6 @@ from dash import Dash, dcc, html, Input, Output, State, callback
 import plotly.express as px 
 import pandas as pd
 import numpy as np
-import streamlit as st
 
 df = pd.read_csv('https://raw.githubusercontent.com/plotly/datasets/master/gapminderDataFiveYear.csv')
 app = Dash() 
