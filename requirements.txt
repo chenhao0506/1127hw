@@ -1,3 +1,4 @@
+solara
 dash
 numpy
 pandas
