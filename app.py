@@ -2,6 +2,7 @@ from dash import Dash, dcc, html, Input, Output, State, callback
 import plotly.express as px 
 import pandas as pd
 import numpy as np
+import streamlit as st
 
 df = pd.read_csv('https://raw.githubusercontent.com/plotly/datasets/master/gapminderDataFiveYear.csv')
 app = Dash() 
@@ -114,4 +115,4 @@ def update_sunburst_figure(selected_year):
     return fig
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(host="0.0.0.0", port=7860, debug=False)
